@@ -7,7 +7,6 @@
 
 extern "C" {
 #include "SDL.h"
-#include "SDL_main.h"
 }
 
 int screen_w = 500, screen_h = 500;
@@ -20,6 +19,9 @@ int main()
 	
 	SDL_Window *screen_ = SDL_CreateWindow("SKY SDL", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_w, screen_h, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
 	SDL_Renderer *render_ = SDL_CreateRenderer(screen_, -1, SDL_RENDERER_ACCELERATED);
+
+	SDL_SetRenderDrawColor(render_, 0, 0, 0, SDL_ALPHA_OPAQUE);
+	SDL_RenderPresent(render_);
 
 	SDL_Texture *texture_ = SDL_CreateTexture(render_, SDL_PIXELFORMAT_UNKNOWN, SDL_TEXTUREACCESS_STREAMING, pixel_w, pixel_h);
 
